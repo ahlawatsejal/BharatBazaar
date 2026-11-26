@@ -1,0 +1,33 @@
+
+# Python
+**/venv/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+**/.env
+**/.env.*
+!.env.example
+
+# React / Node
+**/node_modules/
+**/dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Local databases and database backups
+*.sqlite3
+*.sql
+*.sql.gz
+*.dump
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db

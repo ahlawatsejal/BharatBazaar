@@ -1,0 +1,8 @@
+Django==5.2.19
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+mysqlclient
+python-dotenv
+Pillow
+razorpay

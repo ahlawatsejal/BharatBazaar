@@ -1,0 +1,51 @@
+// Sample category data — demo content for homepage
+export const categories = [
+  {
+    id: 1,
+    name: "Handloom & Textiles",
+    slug: "handloom-textiles",
+    image: "/categories/handloom-textiles.jpg",
+    count: "1,200+ products",
+    description: "Sarees, dupattas, shawls and woven fabrics from Indian looms",
+  },
+  {
+    id: 2,
+    name: "Pottery & Ceramics",
+    slug: "pottery-ceramics",
+    image: "/categories/pottery-ceramics.jpg",
+    count: "480+ products",
+    description: "Blue pottery, terracotta and hand-thrown ceramics",
+  },
+  {
+    id: 3,
+    name: "Jewellery & Accessories",
+    slug: "jewellery-accessories",
+    image: "/categories/jewellery-accessories.jpg",
+    count: "3,100+ products",
+    description: "Kundan, Meenakari, tribal silver and artisan jewellery",
+  },
+  {
+    id: 4,
+    name: "Home Décor",
+    slug: "home-decor",
+    image: "/categories/home-decor.jpg",
+    count: "900+ products",
+    description: "Handmade lamps, cushions, rugs and decorative objects",
+  },
+  {
+    id: 5,
+    name: "Paintings & Art",
+    slug: "paintings-art",
+    image: "/categories/paintings-art.jpg",
+    count: "640+ products",
+    description: "Madhubani, Warli, Pattachitra and miniature paintings",
+  },
+  {
+    id: 6,
+    name: "Handcrafted Metalware",
+    slug: "handcrafted-metalware",
+    image: "/categories/handcrafted-metalware.jpg",
+    count: "2,000+ products",
+    description: "Hammered copperware, brass artifacts and bronze idols",
+  },
+];

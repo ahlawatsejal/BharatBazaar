@@ -1,0 +1,391 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────────────────── */
+:root {
+  /* Brand colors */
+  --burgundy:       #9D294D;
+  --burgundy-dark:  #7a1f3c;
+  --burgundy-deep:  #5e1830;
+  --brown-dark:     #2F211B;
+  --brown-mid:      #4A3728;
+  --brown-light:    #7A5C4A;
+  --cream:          #F8F5F0;
+  --cream-warm:     #F2EDE5;
+  --cream-mid:      #E8DED2;
+  --cream-dark:     #D4C8B8;
+  --gold:           #C9962A;
+  --gold-light:     #E4B84A;
+  --gold-pale:      #F0D080;
+  --charcoal:       #1A1210;
+
+  /* Semantic theme tokens (Light default) */
+  --bg-page:          #F8F5F0;
+  --bg-page-alt:      #FAF7F2;
+  --bg-section:       #F2EDE5;
+  --surface-card:     #FFFFFF;
+  --surface-elevated: #FAF7F2;
+  --surface-subtle:   #F5EFE6;
+  --text-primary:     #2F211B;
+  --text-secondary:   #4A3728;
+  --text-muted:       #7A5C4A;
+  --border-subtle:    #EAE2D8;
+  --border-strong:    #D4C8B8;
+  --accent-terracotta:#9D294D;
+
+  /* Font families */
+  --font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:   'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Dark Theme Tokens (Warm Luxury Charcoal & Terracotta) ──────── */
+html[data-theme="dark"] {
+  --burgundy:       #C84B70;
+  --burgundy-dark:  #A83457;
+  --burgundy-deep:  #7A223D;
+  --brown-dark:     #F3EDE6;
+  --brown-mid:      #D5C9BE;
+  --brown-light:    #A6988C;
+  --cream:          #141110;
+  --cream-warm:     #1A1614;
+  --cream-mid:      #29231F;
+  --cream-dark:     #443932;
+  --gold:           #D6A548;
+  --gold-light:     #E8BE6B;
+  --gold-pale:      #F2D694;
+  --charcoal:       #0E0C0B;
+
+  --bg-page:          #141110;
+  --bg-page-alt:      #181412;
+  --bg-section:       #1A1614;
+  --surface-card:     #211C19;
+  --surface-elevated: #29231F;
+  --surface-subtle:   #1C1815;
+  --text-primary:     #F3EDE6;
+  --text-secondary:   #C9BEB4;
+  --text-muted:       #9E9084;
+  --border-subtle:    #332B26;
+  --border-strong:    #463B34;
+  --accent-terracotta:#C84B70;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--brown-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+  margin: 0;
+}
+
+p, span, a, button, input, label, li, nav {
+  font-family: var(--font-sans);
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ─── Section typography helpers ────────────────────────────────── */
+.section-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--brown-light);
+  max-width: 540px;
+  line-height: 1.65;
+}
+
+.divider-gold {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  margin: 10px 0 20px;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: var(--burgundy);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.14s ease;
+}
+.btn-primary:hover {
+  background: var(--burgundy-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(255,255,255,0.65);
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.14s ease;
+}
+.btn-outline-dark:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-outline-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: transparent;
+  color: var(--burgundy);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--burgundy);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.btn-outline-brand:hover {
+  background: var(--burgundy);
+  color: #fff;
+}
+
+/* ─── Cards ─────────────────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(47,33,27,0.13);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-warm); }
+::-webkit-scrollbar-thumb { background: var(--cream-dark); border-radius: 3px; }
+
+/* ─── Global Dark Theme Surface, Text, Border & Control Rules ────── */
+html[data-theme="dark"] body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* Light surfaces -> coordinated warm charcoal surfaces */
+html[data-theme="dark"] .bg-white,
+html[data-theme="dark"] [class*="bg-\[#ffffff\]" i],
+html[data-theme="dark"] [class*="bg-\[#fff\]" i] {
+  background-color: var(--surface-card) !important;
+}
+
+html[data-theme="dark"] [class*="bg-\[#F8F5F0\]" i],
+html[data-theme="dark"] [class*="bg-\[#FAF7F2\]" i],
+html[data-theme="dark"] [class*="bg-\[#FAF8F5\]" i],
+html[data-theme="dark"] [class*="bg-\[#F2EDE5\]" i],
+html[data-theme="dark"] [class*="bg-\[#FBF9F6\]" i],
+html[data-theme="dark"] [class*="bg-\[#FDFBF8\]" i],
+html[data-theme="dark"] [class*="bg-\[#FCFAF7\]" i],
+html[data-theme="dark"] [class*="bg-\[#FCF9F4\]" i],
+html[data-theme="dark"] .bg-gray-50 {
+  background-color: var(--bg-page-alt) !important;
+}
+
+html[data-theme="dark"] [class*="bg-\[#F5EFE6\]" i],
+html[data-theme="dark"] [class*="bg-\[#F3EEE7\]" i],
+html[data-theme="dark"] [class*="bg-\[#F0EBE3\]" i],
+html[data-theme="dark"] [class*="bg-\[#FFF8F0\]" i],
+html[data-theme="dark"] [class*="bg-\[#E8DED2\]" i],
+html[data-theme="dark"] .bg-gray-100 {
+  background-color: var(--surface-elevated) !important;
+}
+
+html[data-theme="dark"] [class*="hover\:bg-\[#FAF7F2\]" i]:hover,
+html[data-theme="dark"] [class*="hover\:bg-\[#F8F5F0\]" i]:hover,
+html[data-theme="dark"] [class*="hover\:bg-\[#F5EFE6\]" i]:hover,
+html[data-theme="dark"] .hover\:bg-gray-50:hover,
+html[data-theme="dark"] .hover\:bg-gray-100:hover {
+  background-color: var(--surface-elevated) !important;
+}
+
+/* Inline light surface fallbacks (preserves Hero & Footer intentionally) */
+html[data-theme="dark"] [style*="background: #ffffff" i],
+html[data-theme="dark"] [style*="background:#ffffff" i],
+html[data-theme="dark"] [style*="background: #fff" i],
+html[data-theme="dark"] [style*="background:#fff" i],
+html[data-theme="dark"] [style*="background-color: #ffffff" i],
+html[data-theme="dark"] [style*="background: rgb(255, 255, 255)"],
+html[data-theme="dark"] [style*="background-color: rgb(255, 255, 255)"] {
+  background: var(--surface-card) !important;
+  background-color: var(--surface-card) !important;
+}
+
+html[data-theme="dark"] [style*="background: #F8F5F0" i],
+html[data-theme="dark"] [style*="background: #FAF8F5" i],
+html[data-theme="dark"] [style*="background: #FAF7F2" i],
+html[data-theme="dark"] [style*="background: #FCFAF7" i],
+html[data-theme="dark"] [style*="background: #FCF9F4" i],
+html[data-theme="dark"] [style*="background: rgb(248, 245, 240)"],
+html[data-theme="dark"] [style*="background: rgb(250, 248, 245)"],
+html[data-theme="dark"] [style*="background: rgb(250, 247, 242)"],
+html[data-theme="dark"] [style*="background: rgb(252, 250, 247)"],
+html[data-theme="dark"] [style*="background: rgb(252, 249, 244)"] {
+  background: var(--bg-page-alt) !important;
+}
+
+html[data-theme="dark"] [style*="background: #FFF8F0" i],
+html[data-theme="dark"] [style*="background: #F5EFE6" i],
+html[data-theme="dark"] [style*="background: #F8E8EE" i],
+html[data-theme="dark"] [style*="background: rgb(255, 248, 240)"],
+html[data-theme="dark"] [style*="background: rgb(245, 239, 230)"],
+html[data-theme="dark"] [style*="background: rgb(248, 232, 238)"] {
+  background: var(--surface-elevated) !important;
+}
+
+/* Typography colors */
+html[data-theme="dark"] [class*="text-\[#2F211B\]" i],
+html[data-theme="dark"] [class*="text-\[#2C2C2C\]" i],
+html[data-theme="dark"] .text-gray-900,
+html[data-theme="dark"] .text-gray-800 {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] [class*="text-\[#4A3728\]" i],
+html[data-theme="dark"] .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] [class*="text-\[#7A5C4A\]" i],
+html[data-theme="dark"] [class*="text-\[#8B6F5E\]" i],
+html[data-theme="dark"] [class*="text-\[#8C7B70\]" i],
+html[data-theme="dark"] .text-gray-600,
+html[data-theme="dark"] .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+html[data-theme="dark"] [style*="color: #2F211B" i],
+html[data-theme="dark"] [style*="color: #2C2C2C" i],
+html[data-theme="dark"] [style*="color: rgb(47, 33, 27)"],
+html[data-theme="dark"] [style*="color: rgb(44, 44, 44)"] {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] [style*="color: #4A3728" i],
+html[data-theme="dark"] [style*="color: rgb(74, 55, 40)"] {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] [style*="color: #7A5C4A" i],
+html[data-theme="dark"] [style*="color: #8B6F5E" i],
+html[data-theme="dark"] [style*="color: #8C7B70" i],
+html[data-theme="dark"] [style*="color: rgb(122, 92, 74)"],
+html[data-theme="dark"] [style*="color: rgb(139, 111, 94)"],
+html[data-theme="dark"] [style*="color: rgb(140, 123, 112)"] {
+  color: var(--text-muted) !important;
+}
+
+/* Borders & dividers */
+html[data-theme="dark"] [class*="border-\[#eae2d8\]" i],
+html[data-theme="dark"] [class*="border-\[#E8DED2\]" i],
+html[data-theme="dark"] [class*="border-\[#EBE4DA\]" i],
+html[data-theme="dark"] [class*="border-\[#F0EBE3\]" i],
+html[data-theme="dark"] [class*="border-\[#F3EEE7\]" i],
+html[data-theme="dark"] [class*="border-\[#f3eee7\]" i],
+html[data-theme="dark"] [class*="border-\[#DFD3C3\]" i],
+html[data-theme="dark"] [class*="border-\[#D6CCC2\]" i],
+html[data-theme="dark"] [class*="border-\[#D4C8B8\]" i],
+html[data-theme="dark"] [class*="border-\[#EDE4D7\]" i],
+html[data-theme="dark"] [class*="border-\[#F0DFCE\]" i],
+html[data-theme="dark"] .border-gray-100,
+html[data-theme="dark"] .border-gray-200,
+html[data-theme="dark"] .border-gray-300 {
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"] [style*="border-color: #E8DED2" i],
+html[data-theme="dark"] [style*="border-color: #eae2d8" i],
+html[data-theme="dark"] [style*="border-color: #F0EBE3" i],
+html[data-theme="dark"] [style*="border-color: #EDE4D7" i] {
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"] .divide-gray-100 > :not(:last-child),
+html[data-theme="dark"] .divide-gray-200 > :not(:last-child) {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Form controls (inputs, selects, textareas) */
+html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+  background-color: var(--surface-elevated) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-strong) !important;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.85;
+}
+
+html[data-theme="dark"] select option {
+  background-color: var(--surface-card);
+  color: var(--text-primary);
+}
+
+/* Soft dark shadows */
+html[data-theme="dark"] .card-lift:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .shadow-sm,
+html[data-theme="dark"] .shadow-md,
+html[data-theme="dark"] .shadow-lg,
+html[data-theme="dark"] .shadow-xl {
+  --tw-shadow-color: rgba(0, 0, 0, 0.45);
+}
