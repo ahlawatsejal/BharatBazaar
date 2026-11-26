@@ -6,3 +6,5 @@ mysqlclient
 python-dotenv
 Pillow
 razorpay
+gunicorn
+whitenoise

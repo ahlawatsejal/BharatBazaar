@@ -41,6 +41,19 @@ ALLOWED_HOSTS = [
     h.strip() for h in os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',') if h.strip()
 ]
 
+# Production security settings
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+
+# Enable HSTS after confirming production HTTPS works.
+SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS', '0'))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
+
+
 
 # Application definition
 
@@ -77,6 +90,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -103,22 +117,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 AUTH_USER_MODEL = 'accounts.User'
 
 
-# Database configuration (MySQL 8.0)
+
+# Database configuration (TiDB Cloud - MySQL Compatible)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
+        'NAME': os.getenv('DB_NAME', 'bharatbazaar'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '3306'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT', '4000'),
         'OPTIONS': {
             'charset': 'utf8mb4',
+            'ssl': {
+                'ca': os.getenv('DB_SSL_CA'),
+            },
         },
     }
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 
 # Password validation
@@ -184,24 +203,28 @@ SIMPLE_JWT = {
 
 
 # CORS configuration
+
+# CORS configuration
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'http://localhost:5174',
-    'http://127.0.0.1:5174',
-    'http://localhost:5175',
-    'http://127.0.0.1:5175',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
+    origin.strip()
+    for origin in os.getenv(
+        'CORS_ALLOWED_ORIGINS',
+        'http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174,http://127.0.0.1:5174,http://localhost:5175,http://127.0.0.1:5175,http://localhost:3000,http://127.0.0.1:3000'
+    ).split(',')
+    if origin.strip()
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-from corsheaders.defaults import default_headers
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'content-type',
-    'authorization',
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv(
+        'CSRF_TRUSTED_ORIGINS',
+        'http://localhost:5173,http://127.0.0.1:5173'
+    ).split(',')
+    if origin.strip()
 ]
+
 
 
 # Internationalization
