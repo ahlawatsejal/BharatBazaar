@@ -35,12 +35,6 @@ const bottomLinks = [
   { label: "Contact", to: "/info/contact" },
 ];
 
-const projectTeam = [
-  { name: "Sejal", role: "Team Member 1" },
-  { name: "Shubham", role: "Team Member 2" },
-  { name: "Vansh", role: "Team Member 3" },
-];
-
 const PROJECT_CONTACT_EMAIL = "shubhampolist151104@gmail.com";
 
 export default function Footer() {
@@ -295,47 +289,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Project Team & Contact Us */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-b border-white/10 items-start">
-          <div className="md:col-span-2">
-            <h4
-              style={{
-                fontFamily: "var(--font-sans)",
-                color: "var(--gold)",
-                fontSize: "10.5px",
-                fontWeight: "700",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                marginBottom: "12px",
-              }}
-            >
-              Project Team
-            </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {projectTeam.map((member) => (
-                <div
-                  key={member.name}
-                  className="px-4 py-3"
-                  style={{
-                    background: "rgba(248,245,240,0.03)",
-                    border: "1px solid rgba(248,245,240,0.12)",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      color: "#F8F5F0",
-                      fontSize: "13px",
-                      fontWeight: "600",
-                    }}
-                  >
-                    {member.name} — {member.role}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        {/* Contact Us */}
+        <div className="py-6 border-b border-white/10">
           <div>
             <h4
               style={{
@@ -345,7 +300,7 @@ export default function Footer() {
                 fontWeight: "700",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                marginBottom: "12px",
+                marginBottom: "8px",
               }}
             >
               Contact Us
