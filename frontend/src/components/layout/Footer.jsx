@@ -35,8 +35,6 @@ const bottomLinks = [
   { label: "Contact", to: "/info/contact" },
 ];
 
-const PROJECT_CONTACT_EMAIL = "shubhampolist151104@gmail.com";
-
 export default function Footer() {
   const [siteInfo, setSiteInfo] = useState({
     marketplace_name: "BharatBazaar",
@@ -286,46 +284,6 @@ export default function Footer() {
                 </p>
               )}
             </form>
-          </div>
-        </div>
-
-        {/* Contact Us */}
-        <div className="py-6 border-b border-white/10">
-          <div>
-            <h4
-              style={{
-                fontFamily: "var(--font-sans)",
-                color: "var(--gold)",
-                fontSize: "10.5px",
-                fontWeight: "700",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                marginBottom: "8px",
-              }}
-            >
-              Contact Us
-            </h4>
-            <p
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "12.5px",
-                color: "rgba(248,245,240,0.55)",
-                marginBottom: "6px",
-              }}
-            >
-              Project Contact Email
-            </p>
-            <a
-              href={`mailto:${PROJECT_CONTACT_EMAIL}`}
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "13px",
-                color: "#F8F5F0",
-              }}
-              className="inline-block underline break-all hover:text-[color:var(--gold)] transition-colors"
-            >
-              {PROJECT_CONTACT_EMAIL}
-            </a>
           </div>
         </div>
 
