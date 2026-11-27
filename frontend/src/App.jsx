@@ -110,344 +110,344 @@ export default function App() {
       <BrowserRouter>
         <AuthProvider>
           <CartProvider>
-          <Suspense fallback={<PageLoadingFallback />}>
-            <Routes>
-            {/* Public Landing & Catalogue Pages */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/shop" element={<ShopPage />} />
-            <Route path="/artisans" element={<ArtisansPage />} />
-            <Route path="/craft-stories" element={<CraftStoriesPage />} />
-            <Route path="/craft-stories/:slug" element={<CraftStoriesPage />} />
-            <Route path="/impact" element={<ImpactPage />} />
-            <Route path="/info/:topic" element={<InfoPage />} />
-            <Route path="/product/:slug" element={<ProductDetailPage />} />
-            <Route path="/products/:slug" element={<ProductDetailPage />} />
+            <Suspense fallback={<PageLoadingFallback />}>
+              <Routes>
+                {/* Public Landing & Catalogue Pages */}
+                <Route path="/" element={<HomePage />} />
+                <Route path="/shop" element={<ShopPage />} />
+                <Route path="/artisans" element={<ArtisansPage />} />
+                <Route path="/craft-stories" element={<CraftStoriesPage />} />
+                <Route path="/craft-stories/:slug" element={<CraftStoriesPage />} />
+                <Route path="/impact" element={<ImpactPage />} />
+                <Route path="/info/:topic" element={<InfoPage />} />
+                <Route path="/product/:slug" element={<ProductDetailPage />} />
+                <Route path="/products/:slug" element={<ProductDetailPage />} />
 
-            {/* Shopping Cart & Checkout */}
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/wishlist" element={<Navigate to="/customer/wishlist" replace />} />
-            <Route
-              path="/checkout"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CheckoutPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/order-confirmation/:orderNumber"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <OrderConfirmationPage />
-                </ProtectedRoute>
-              }
-            />
+                {/* Shopping Cart & Checkout */}
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/wishlist" element={<Navigate to="/customer/wishlist" replace />} />
+                <Route
+                  path="/checkout"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CheckoutPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/order-confirmation/:orderNumber"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <OrderConfirmationPage />
+                    </ProtectedRoute>
+                  }
+                />
 
-            {/* Authentication Pages */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<CustomerRegisterPage />} />
-            <Route path="/seller/register" element={<SellerRegisterPage />} />
+                {/* Authentication Pages */}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<CustomerRegisterPage />} />
+                <Route path="/seller/register" element={<SellerRegisterPage />} />
 
-            {/* Seller Application Status Pages (Protected: SELLER) */}
-            <Route
-              path="/seller/pending"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']}>
-                  <SellerPendingPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/rejected"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']}>
-                  <SellerRejectedPage />
-                </ProtectedRoute>
-              }
-            />
+                {/* Seller Application Status Pages (Protected: SELLER) */}
+                <Route
+                  path="/seller/pending"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']}>
+                      <SellerPendingPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/rejected"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']}>
+                      <SellerRejectedPage />
+                    </ProtectedRoute>
+                  }
+                />
 
-            {/* Customer Dashboard & Patron Portal (Protected) */}
-            <Route
-              path="/customer/dashboard"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/profile"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerProfilePage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/orders"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerOrdersPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/orders/:orderNumber"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerOrderDetailPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/addresses"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerAddressesPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/wishlist"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerWishlistPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/reviews"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerReviewsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/notifications"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerNotificationsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/returns"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerReturnsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/customer/security"
-              element={
-                <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                  <CustomerSecurityPage />
-                </ProtectedRoute>
-              }
-            />
+                {/* Customer Dashboard & Patron Portal (Protected) */}
+                <Route
+                  path="/customer/dashboard"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/profile"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerProfilePage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/orders"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerOrdersPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/orders/:orderNumber"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerOrderDetailPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/addresses"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerAddressesPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/wishlist"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerWishlistPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/reviews"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerReviewsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/notifications"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerNotificationsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/returns"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerReturnsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/customer/security"
+                  element={
+                    <ProtectedRoute allowedRoles={['CUSTOMER']}>
+                      <CustomerSecurityPage />
+                    </ProtectedRoute>
+                  }
+                />
 
-            {/* Approved Artisan Seller Portal (Protected: SELLER + APPROVED) */}
-            <Route
-              path="/seller/dashboard"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/store"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerStorePage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/products"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerProductsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/inventory"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerInventoryPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/orders"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerOrdersPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/orders/:orderNumber"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerOrderDetailPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/analytics"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerAnalyticsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/reviews"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerReviewsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/notifications"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerNotificationsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/settings"
-              element={
-                <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
-                  <SellerSettingsPage />
-                </ProtectedRoute>
-              }
-            />
+                {/* Approved Artisan Seller Portal (Protected: SELLER + APPROVED) */}
+                <Route
+                  path="/seller/dashboard"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/store"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerStorePage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/products"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerProductsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/inventory"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerInventoryPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/orders"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerOrdersPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/orders/:orderNumber"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerOrderDetailPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/analytics"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerAnalyticsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/reviews"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerReviewsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/notifications"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerNotificationsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/settings"
+                  element={
+                    <ProtectedRoute allowedRoles={['SELLER']} requireApprovedSeller={true}>
+                      <SellerSettingsPage />
+                    </ProtectedRoute>
+                  }
+                />
 
-            {/* Admin Dashboard & Governance Portal (Protected: ADMIN) */}
-            <Route
-              path="/admin/dashboard"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/sellers"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminSellersPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/sellers/:id"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminSellerDetailPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/products"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminProductsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/products/:id"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminProductDetailPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/customers"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminCustomersPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/customers/:id"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminCustomerDetailPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/orders"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminOrdersPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/orders/:orderNumber"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminOrderDetailPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/returns"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminReturnsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/payments"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminPaymentsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/payments/:identifier"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminPaymentDetailPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/analytics"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminAnalyticsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/settings"
-              element={
-                <ProtectedRoute allowedRoles={['ADMIN']}>
-                  <AdminSettingsPage />
-                </ProtectedRoute>
-              }
-            />
+                {/* Admin Dashboard & Governance Portal (Protected: ADMIN) */}
+                <Route
+                  path="/admin/dashboard"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/sellers"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminSellersPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/sellers/:id"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminSellerDetailPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/products"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminProductsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/products/:id"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminProductDetailPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/customers"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminCustomersPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/customers/:id"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminCustomerDetailPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/orders"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminOrdersPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/orders/:orderNumber"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminOrderDetailPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/returns"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminReturnsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/payments"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminPaymentsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/payments/:identifier"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminPaymentDetailPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/analytics"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminAnalyticsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/settings"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN']}>
+                      <AdminSettingsPage />
+                    </ProtectedRoute>
+                  }
+                />
 
-            {/* Catch-all redirect */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Suspense>
+                {/* Catch-all redirect */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Suspense>
           </CartProvider>
         </AuthProvider>
       </BrowserRouter>

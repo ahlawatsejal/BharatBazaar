@@ -118,21 +118,23 @@ AUTH_USER_MODEL = 'accounts.User'
 
 
 
-# Database configuration (TiDB Cloud - MySQL Compatible)
+# Database configuration (MySQL — supports DB_* and Railway MYSQL* variables)
+_db_options = {
+    'charset': 'utf8mb4',
+}
+_db_ssl_ca = os.getenv('DB_SSL_CA', '').strip()
+if _db_ssl_ca:
+    _db_options['ssl'] = {'ca': _db_ssl_ca}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'bharatbazaar'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', '4000'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'ssl': {
-                'ca': os.getenv('DB_SSL_CA'),
-            },
-        },
+        'NAME': os.getenv('DB_NAME') or os.getenv('MYSQLDATABASE') or 'bharatbazaar',
+        'USER': os.getenv('DB_USER') or os.getenv('MYSQLUSER'),
+        'PASSWORD': os.getenv('DB_PASSWORD') or os.getenv('MYSQLPASSWORD'),
+        'HOST': os.getenv('DB_HOST') or os.getenv('MYSQLHOST'),
+        'PORT': os.getenv('DB_PORT') or os.getenv('MYSQLPORT') or '3306',
+        'OPTIONS': _db_options,
     }
 }
 
@@ -239,9 +241,9 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
-# Media files
+# Media files (supports Railway Volume path via MEDIA_ROOT env var)
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = Path(os.getenv('MEDIA_ROOT', str(BASE_DIR / 'media')))
 
 
 # Email configuration (Django 5.2 compatible)
